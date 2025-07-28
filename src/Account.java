@@ -1,17 +1,22 @@
 public class Account {
     private String owner;
+    private String password;
     private double cash;
     private final int id;
     private static int idAdd = 0;
 
     public Account(String owner, String password){
         this.owner = owner;
+        this.password = password;
         this.id = ++idAdd;
         this.cash = 0;
     }
 
     public String getOwner() {
         return owner;
+    }
+    public String getPassword(){
+        return password;
     }
 
     public double getCash() {

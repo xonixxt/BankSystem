@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Bank {
+    private Account loggedAcc;
     private ArrayList<Account> accounts = new ArrayList<>();
 
     public void addAcc(Account acc){
@@ -18,6 +19,23 @@ public class Bank {
             System.out.println("Balance: R$" + acc.getCash());
         }
     }
+
+    public Account login(int idWritten, String passwordWritten){
+        for (Account acc : accounts){
+            if (idWritten == acc.getId() && passwordWritten.equals(acc.getPassword())){
+                loggedAcc = acc;
+                System.out.println("Login successful.");
+                return acc;
+            }
+        }
+        System.out.println("Login failed.");
+        return null;
+    }
+    public void logout(){
+        loggedAcc = null;
+        System.out.println("Logout with success.");
+    }
+
     public Account findAccById(int id){
         for (Account acc : accounts){
             if (id == acc.getId()){
