@@ -36,13 +36,42 @@ public class Bank {
         System.out.println("Logout with success.");
     }
 
-    public Account findAccById(int id){
-        for (Account acc : accounts){
-            if (id == acc.getId()){
-                return acc;
-            }
+    public void deposit(double amount) {
+        if (loggedAcc != null) {
+            loggedAcc.deposit(amount);
+        } else {
+            System.out.println("You need to login first.");
         }
-        System.out.println("Account not found.");
-        return null;
     }
+
+    public void withdraw(double amount) {
+        if (loggedAcc != null) {
+            loggedAcc.withdraw(amount);
+        } else {
+            System.out.println("You need to login first.");
+        }
+    }
+
+    public void transfer(int destinationId, double amount) {
+        if (loggedAcc != null) {
+            for (Account acc : accounts) {
+                if (acc.getId() == destinationId) {
+                    loggedAcc.transfer(acc, amount);
+                    return;
+                }
+            }
+            System.out.println("Destination account not found.");
+        } else {
+            System.out.println("You need to login first.");
+        }
+    }
+
+    public void viewAccount() {
+        if (loggedAcc != null) {
+            loggedAcc.viewAccount();
+        } else {
+            System.out.println("You need to login first.");
+        }
+    }
+
 }
