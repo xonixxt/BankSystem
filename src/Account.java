@@ -37,6 +37,10 @@ public class Account {
     }
 
     public void withdraw(double amount){
+        if(amount <= 0){
+            System.out.println("Insert a value greater than 0.");
+            return;
+        }
         if (this.cash >= amount){
             this.cash -= amount;
             System.out.println("R$" + amount + " withdrawn successful!");
@@ -45,6 +49,10 @@ public class Account {
         }
     }
     public void transfer(Account destination, double amount) {
+        if (amount <= 0) {
+            System.out.println("Insert a value greater than 0.");
+            return;
+        }
         if (destination == null) {
             System.out.println("Account not found.");
             return;

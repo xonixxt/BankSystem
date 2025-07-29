@@ -32,8 +32,12 @@ public class Bank {
         return null;
     }
     public void logout(){
+        if (loggedAcc == null){
+            System.out.println("No user is currently logged in.");
+            return;
+        }
         loggedAcc = null;
-        System.out.println("Logout with success.");
+        System.out.println("Logout successful.");
     }
 
     public void deposit(double amount) {
